@@ -1,0 +1,10 @@
+nav {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+}
+nav .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
+.links { display: flex; gap: 26px; margin-left: auto; color: var(--mute); font-size: 15px; }
+.links a:hover { color: var(--ink); }
+nav .btn { padding: 10px 18px; }
+@media (max-width: 760px) { .links, .hide { display: none; } nav .btn.p { margin-left: auto; } }

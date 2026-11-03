@@ -1,0 +1,32 @@
+<div class="auth">
+  <div class="side">
+    <h1>Enter<br>the<s>arena.</s></h1>
+    <p>Sign in to keep building, collaborating and competing with the CampusCode community.</p>
+  </div>
+  <div class="panel">
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <h2>Log in</h2>
+      <p class="hint">Access your CampusCode account.</p>
+
+      <label for="email">Email address</label>
+      <input id="email" type="email" formControlName="email" placeholder="you@example.com" autocomplete="email">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="Enter your password" autocomplete="current-password">
+
+      <label>Captcha</label>
+      <div class="cap">
+        <code>{{ captcha.code() }}</code>
+        <button type="button" (click)="captcha.refresh()">New code</button>
+      </div>
+      <label for="captcha">Type the code above</label>
+      <input id="captcha" formControlName="captcha" placeholder="Type the code above" inputmode="numeric">
+
+      <div class="msg" role="status" [class.ok]="message()?.ok" [class.err]="message() && !message()!.ok">{{ message()?.text }}</div>
+      <button class="btn p" type="submit">Log in</button>
+
+      <p class="alt"><a routerLink="/login">Forgot password?</a></p>
+      <p class="alt">New here? <a routerLink="/register">Create account</a></p>
+    </form>
+  </div>
+</div>

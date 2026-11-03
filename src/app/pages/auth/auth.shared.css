@@ -1,0 +1,32 @@
+:host { display: block; }
+.auth { min-height: calc(100vh - 68px); display: grid; grid-template-columns: 1.1fr 1fr; }
+@media (max-width: 900px) { .auth { grid-template-columns: 1fr; } .side { display: none; } }
+.side { position: relative; padding: 80px 48px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+.side::before { content: ""; position: absolute; width: 520px; height: 520px; left: -100px; bottom: -160px; background: radial-gradient(circle, var(--c) 0, transparent 65%); opacity: .28; filter: blur(40px); }
+.side h1 { font-size: clamp(60px, 9vw, 130px); position: relative; }
+.side h1 s { text-decoration: none; color: transparent; -webkit-text-stroke: 2px var(--v); display: block; }
+.side p { color: var(--mute); font-size: 19px; max-width: 380px; margin-top: 26px; position: relative; }
+.panel { display: grid; place-items: center; padding: 40px 24px; background: var(--bg2); border-left: 1px solid var(--line); }
+form { width: 100%; max-width: 440px; animation: fade .5s forwards; opacity: 0; }
+@keyframes fade { to { opacity: 1; } }
+form h2 { font-size: 56px; margin-bottom: 6px; }
+.hint { color: var(--mute); margin-bottom: 26px; }
+label { display: block; font-size: 14px; color: var(--mute); margin: 16px 0 6px; }
+input, select {
+  width: 100%; padding: 15px 16px; border-radius: 12px; border: 1.5px solid var(--line);
+  background: var(--bg); color: var(--ink); font: inherit; transition: border-color .2s, box-shadow .2s;
+}
+input:focus, select:focus { outline: none; border-color: var(--v); box-shadow: 0 0 0 4px color-mix(in srgb, var(--v) 30%, transparent); }
+.cap { display: flex; gap: 12px; align-items: center; }
+.cap code { font: 800 28px 'Bricolage Grotesque'; letter-spacing: .15em; padding: 8px 18px; border-radius: 10px; background: repeating-linear-gradient(-20deg, var(--bg) 0 6px, var(--line) 6px 7px); color: var(--l); user-select: none; }
+.cap button { background: none; border: 0; color: var(--v); cursor: pointer; font: inherit; }
+.chk { display: flex; gap: 10px; align-items: center; margin: 18px 0; }
+.chk input { width: 20px; height: 20px; accent-color: var(--l); }
+.chk label { margin: 0; color: var(--ink); }
+form .btn.p { width: 100%; justify-content: center; margin-top: 8px; font-weight: 700; padding: 16px; }
+.msg { margin-top: 14px; min-height: 22px; font-size: 15px; }
+.msg.err { color: var(--c); }
+.msg.ok { color: var(--l); }
+.alt { margin-top: 20px; color: var(--mute); font-size: 15px; }
+.alt a { color: var(--v); font-weight: 500; }
+@media (prefers-reduced-motion: reduce) { form { opacity: 1; } }

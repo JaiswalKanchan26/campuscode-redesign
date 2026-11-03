@@ -1,27 +1,94 @@
-<div class="home">
-  <header class="header">
-    <div class="logo">
-      <span class="logo-icon">⟨/⟩</span>
-      <span class="logo-text">CampusCode</span>
+<header class="hero" id="about">
+  <div class="wrap">
+    <h1>
+      <span><b>Build.</b></span>
+      <span><b>Compete.</b></span>
+      <span><b>Ship.</b></span>
+    </h1>
+    <div class="sub">
+      <p>The arena for students who don’t just have ideas. They build them.</p>
+      <a class="btn p" routerLink="/" fragment="hackathons">Explore hackathons</a>
     </div>
-    <nav class="nav">
-      <a href="#">Home</a>
-      <a href="#">Courses</a>
-      <a href="#">Events</a>
-      <a href="#">About</a>
-    </nav>
-    <button class="btn-primary">Get Started</button>
-  </header>
+  </div>
+  <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+</header>
 
-  <main class="hero">
-    <div class="hero-content">
-      <h1>Learn. Build. <span class="accent">Grow.</span></h1>
-      <p>CampusCode is where students become developers. Join coding bootcamps, hackathons, and workshops designed for campus life.</p>
-      <div class="hero-actions">
-        <button class="btn-primary">Explore Courses</button>
-        <button class="btn-outline">View Events</button>
-      </div>
-    </div>
-  </main>
+<div class="mq" aria-hidden="true">
+  <div>
+    @for (w of ticker; track $index) { {{ w }}<em>/</em> }
+    @for (w of ticker; track $index) { {{ w }}<em>/</em> }
+  </div>
 </div>
 
+<section id="how">
+  <div class="wrap">
+    <div class="sh"><h2>How it works</h2><p>From idea to impact in four moves.</p></div>
+    <div class="steps">
+      @for (s of steps; track s.title; let i = $index) {
+        <div class="step">
+          <div class="n" [class.lime]="i === 3">{{ i + 1 }}</div>
+          <div><h3>{{ s.title }}</h3><p>{{ s.text }}</p></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section id="hackathons" class="flush">
+  <div class="wrap">
+    <div class="sh"><h2>Enter the arena</h2><a class="btn" routerLink="/register">View all</a></div>
+    @for (h of hackathons; track h.name) {
+      <a class="hk" routerLink="/register">
+        <div><small>{{ h.field }}</small><h3>{{ h.name }}</h3></div>
+        <p>{{ h.text }}</p>
+        <span class="tag" [class.live]="h.status === 'live'" [class.open]="h.status === 'open'">{{ h.label }}</span>
+      </a>
+    }
+  </div>
+</section>
+
+<section id="community" class="flush">
+  <div class="wrap net">
+    <div>
+      <h2>Find your <span>people.</span></h2>
+      <ul>
+        <li>Build with developers.</li>
+        <li>Think with designers.</li>
+        <li>Compete with builders.</li>
+      </ul>
+    </div>
+    <div class="orb" aria-hidden="true">
+      <div class="r"><i></i><i></i></div>
+      <div class="r b"><i></i></div>
+      <div class="core">CC</div>
+    </div>
+  </div>
+</section>
+
+<section class="flush">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Your next idea<br>starts <u>here.</u></h2>
+      <a class="btn p" routerLink="/register">Create your account</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <a class="logo" routerLink="/"><span class="slash"><i></i><i></i><i></i></span>CampusCode</a>
+        <p class="tagline">You build the idea,<br>we run the competition.</p>
+      </div>
+      @for (col of footerLinks; track col.heading) {
+        <div>
+          <h4>{{ col.heading }}</h4>
+          @for (l of col.links; track l) { <a routerLink="/">{{ l }}</a> }
+        </div>
+      }
+    </div>
+    <div class="big" aria-hidden="true">CampusCode</div>
+    <div class="copy"><span>© 2026 CampusCode</span><span>Learn · Build · Compete · Ship</span><span>Chennai, India</span></div>
+  </div>
+</footer>

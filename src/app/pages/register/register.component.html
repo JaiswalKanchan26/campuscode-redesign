@@ -1,0 +1,46 @@
+<div class="auth">
+  <div class="side">
+    <h1>Join<br>the<s>arena.</s></h1>
+    <p>Create your CampusCode identity, find teammates and turn ideas into submissions.</p>
+  </div>
+  <div class="panel">
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <h2>Register</h2>
+      <p class="hint">Create your CampusCode account.</p>
+
+      <label for="name">Full name</label>
+      <input id="name" formControlName="name" placeholder="Your full name" autocomplete="name">
+
+      <label for="email">Email address</label>
+      <input id="email" type="email" formControlName="email" placeholder="you@example.com" autocomplete="email">
+
+      <label for="type">Account type</label>
+      <select id="type" formControlName="accountType"><option>Student</option></select>
+      <p class="alt">Organizer? Our team creates organizer accounts. Contact
+        <a href="mailto:campuscode@gmail.com">campuscode&#64;gmail.com</a>.</p>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="Create a password" autocomplete="new-password">
+
+      <label for="confirm">Confirm password</label>
+      <input id="confirm" type="password" formControlName="confirm" placeholder="Repeat your password" autocomplete="new-password">
+
+      <label>Captcha</label>
+      <div class="cap">
+        <code>{{ captcha.code() }}</code>
+        <button type="button" (click)="captcha.refresh()">New code</button>
+      </div>
+      <label for="captcha">Type the code above</label>
+      <input id="captcha" formControlName="captcha" placeholder="Type the code above" inputmode="numeric">
+
+      <div class="chk">
+        <input type="checkbox" id="adult" formControlName="adult">
+        <label for="adult">I confirm that I am 18 years or older.</label>
+      </div>
+
+      <div class="msg" role="status" [class.ok]="message()?.ok" [class.err]="message() && !message()!.ok">{{ message()?.text }}</div>
+      <button class="btn p" type="submit">Send verification code</button>
+      <p class="alt">Already registered? <a routerLink="/login">Log in</a></p>
+    </form>
+  </div>
+</div>
